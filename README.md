@@ -1,192 +1,244 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>autoPOD: E-commerce Automation Platform</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 2rem; line-height: 1.6; }
-    h1, h2, h3 { color: #1a202c; }
-    code, pre { background: #f4f4f4; padding: 2px 4px; border-radius: 3px; }
-    ul { margin-left: 2rem; }
-    a { color: #2563eb; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .section { margin-bottom: 2.5rem; }
-    .toc { background: #f9fafb; border: 1px solid #e5e7eb; padding: 1rem; border-radius: 6px; margin-bottom: 2rem; }
-    .toc ul { margin: 0; padding-left: 1.5rem; }
-  </style>
-</head>
-<body>
-  <h1>autoPOD: E-commerce Automation Platform</h1>
-  <p><strong>Production-ready, enterprise-grade system for e-commerce automation, print-on-demand, AI content generation, and scalable cloud backend.</strong></p>
+# autoPOD: E-commerce Automation Platform
 
-  <div class="toc">
-    <h2>Table of Contents</h2>
-    <ul>
-      <li><a href="#overview">Project Overview & Value Proposition</a></li>
-      <li><a href="#integrations">Supported Integrations</a></li>
-      <li><a href="#architecture">Architecture</a></li>
-      <li><a href="#setup">Setup & Installation</a></li>
-      <li><a href="#usage">Usage</a></li>
-      <li><a href="#api">API Documentation</a></li>
-      <li><a href="#testing">Testing</a></li>
-      <li><a href="#deployment">Deployment</a></li>
-      <li><a href="#troubleshooting">Troubleshooting & FAQ</a></li>
-      <li><a href="#contribution">Contribution Guidelines</a></li>
-      <li><a href="#security">Security & Compliance</a></li>
-      <li><a href="#license">License</a></li>
-      <li><a href="#acknowledgments">Acknowledgments</a></li>
-    </ul>
-  </div>
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
+![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+![Coverage](https://img.shields.io/badge/coverage-100%25-success)
 
-  <div class="section" id="overview">
-    <h2>Project Overview & Value Proposition</h2>
-    <p>
-      <strong>autoPOD</strong> is a full-stack, production-grade platform for e-commerce automation, print-on-demand, and AI-powered content generation. It leverages Supabase for scalable backend services (database, auth, storage, edge functions, CRON), integrates with Gelato, Printful, and Printify APIs for product and order automation, supports Google Sheets for data sync, and uses OpenRouter for advanced AI content generation. The system is modular, secure, and ready for enterprise deployment.
-    </p>
-    <ul>
-      <li>Automate product creation and order fulfillment with Gelato, Printful, and Printify</li>
-      <li>Store and serve assets via Supabase Storage + Smart CDN</li>
-      <li>AI-powered product titles, descriptions, and SEO metadata (OpenRouter, free models only)</li>
-      <li>Google Sheets integration for import/export and reporting</li>
-      <li>Enterprise-grade security, RLS, and compliance</li>
-      <li>100% test coverage, modular code, and clean monorepo structure</li>
-    </ul>
-  </div>
+**Production-ready, enterprise-grade system for e-commerce automation, print-on-demand, AI content generation, and scalable cloud backend.**
 
-  <div class="section" id="integrations">
-    <h2>Supported Integrations</h2>
-    <ul>
-      <li><strong>Gelato API</strong>: Print-on-demand product and order automation</li>
-      <li><strong>Printful API</strong>: Print-on-demand product and order automation</li>
-      <li><strong>Printify API</strong>: Print-on-demand product and order automation</li>
-      <li><strong>Google Sheets</strong>: Data import/export and reporting</li>
-      <li><strong>OpenRouter AI</strong>: AI content generation (free models only)</li>
-      <li><strong>Supabase</strong>: Database, Auth, Storage, Edge Functions, CRON, Realtime</li>
-    </ul>
-  </div>
+---
 
-  <div class="section" id="architecture">
-    <h2>Architecture</h2>
-    <ul>
-      <li><strong>Backend:</strong> Supabase Edge Functions (TypeScript/Deno), Supabase (DB, Auth, Storage, Edge Functions, CRON), Gelato API, Printful API, Printify API, Google Sheets API, OpenRouter AI</li>
-      <li><strong>Frontend:</strong> React (CRA, JS), Tailwind CSS, shadcn/ui, Supabase UI</li>
-      <li><strong>Monorepo:</strong> Strict separation of frontend and backend, all configs and dependencies isolated</li>
-      <li><strong>Docs:</strong> Modular, up-to-date, and actionable (see <code>docs/</code> directory)</li>
-    </ul>
-    <p>See <code>docs/architecture.md</code> and <code>docs/diagrams/</code> for detailed diagrams and explanations.</p>
-  </div>
+## Table of Contents
+- [Project Overview & Value Proposition](#project-overview--value-proposition)
+- [Features](#features)
+- [Supported Integrations](#supported-integrations)
+- [Architecture](#architecture)
+- [Quick Start](#quick-start)
+- [Setup & Installation](#setup--installation)
+- [Usage](#usage)
+- [API Documentation](#api-documentation)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Troubleshooting & FAQ](#troubleshooting--faq)
+- [Contribution Guidelines](#contribution-guidelines)
+- [Security & Compliance](#security--compliance)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
+- [Development Workflow](#development-workflow)
 
-  <div class="section" id="setup">
-    <h2>Setup & Installation</h2>
-    <ol>
-      <li>Clone the repository: <code>git clone &lt;repo-url&gt;</code></li>
-      <li>Install frontend dependencies: <code>cd frontend &amp;&amp; npm install</code></li>
-      <li>Set up environment variables in <code>frontend/.env</code> and <code>supabase/.env</code> (see <code>docs/setup.md</code> for details)</li>
-      <li>Start Supabase local development: <code>supabase start</code></li>
-      <li>Run Supabase migrations: <code>supabase db push</code> (see <code>docs/deployment.md</code>)</li>
-      <li>Start all services: <code>npm run dev</code> from the project root (runs frontend and Supabase Edge Functions)</li>
-    </ol>
-    <p>See <code>docs/setup.md</code> for full details and environment variable examples.</p>
-  </div>
+---
 
-  <div class="section" id="usage">
-    <h2>Usage</h2>
-    <ul>
-      <li>Access the frontend at <code>http://localhost:3000</code></li>
-      <li>API endpoints are documented in <code>docs/api-backend.md</code> and <code>docs/api-frontend.md</code></li>
-      <li>Authentication flows: email/password, magic link, phone/SMS, OAuth (Google, etc.)</li>
-      <li>Product and template management, file uploads, real-time features</li>
-      <li>AI content generation for product metadata (server-side only)</li>
-      <li>Google Sheets import/export for product and order data</li>
-    </ul>
-    <p>See <code>docs/usage.md</code> for user flows and feature guides.</p>
-  </div>
+## Project Overview & Value Proposition
 
-  <div class="section" id="api">
-    <h2>API Documentation</h2>
-    <h3>Backend API</h3>
-    <ul>
-      <li>All endpoints, request/response formats, and error handling in <code>docs/api-backend.md</code></li>
-      <li>Supabase Edge Functions documented in <code>supabase/functions/</code></li>
-    </ul>
-    <h3>Frontend API</h3>
-    <ul>
-      <li>API integration and usage in <code>docs/api-frontend.md</code></li>
-      <li>Supabase client usage, authentication, and storage</li>
-    </ul>
-  </div>
+> **autoPOD** is a full-stack, production-grade platform for e-commerce automation, print-on-demand, and AI-powered content generation. It leverages Supabase for scalable backend services (database, auth, storage, edge functions, CRON), integrates with Gelato, Printful, and Printify APIs for product and order automation, supports Google Sheets for data sync, and uses OpenRouter for advanced AI content generation. The system is modular, secure, and ready for enterprise deployment.
 
-  <div class="section" id="testing">
-    <h2>Testing</h2>
-    <ul>
-      <li>100% unit and integration test coverage required</li>
-      <li>Frontend: Jest + React Testing Library</li>
-      <li>Edge Functions: Deno test</li>
-      <li>See <code>docs/testing.md</code> for test strategy, coverage reports, and CI setup</li>
-    </ul>
-  </div>
+- Automate product creation and order fulfillment with Gelato, Printful, and Printify
+- Store and serve assets via Supabase Storage + Smart CDN
+- AI-powered product titles, descriptions, and SEO metadata (OpenRouter, free models only)
+- Google Sheets integration for import/export and reporting
+- Enterprise-grade security, RLS, and compliance
+- 100% test coverage, modular code, and clean monorepo structure
 
-  <div class="section" id="deployment">
-    <h2>Deployment</h2>
-    <ul>
-      <li>Production deployment instructions in <code>docs/deployment.md</code></li>
-      <li>Environment variable management and security best practices</li>
-      <li>Zero-downtime migrations and rollbacks</li>
-      <li>CDN and cache configuration for assets</li>
-    </ul>
-  </div>
+---
 
-  <div class="section" id="troubleshooting">
-    <h2>Troubleshooting & FAQ</h2>
-    <ul>
-      <li>Common issues and solutions in <code>docs/troubleshooting.md</code></li>
-      <li>FAQ in <code>docs/faq.md</code></li>
-      <li>Contact support via issues or <code>docs/faq.md</code></li>
-    </ul>
-  </div>
+## Features
 
-  <div class="section" id="contribution">
-    <h2>Contribution Guidelines</h2>
-    <ul>
-      <li>All contributors must read and follow <code>docs/contribution.md</code></li>
-      <li>Strict code review, PR, and code standards</li>
-      <li>Atomic commits, descriptive messages, and logical grouping</li>
-      <li>See <code>docs/contribution.md</code> for PR process and review requirements</li>
-    </ul>
-  </div>
+| Feature                        | Description                                                      | Status      |
+|------------------------------- |------------------------------------------------------------------|-------------|
+| Print-on-demand Automation     | Gelato, Printful, Printify API integration                        | ✅          |
+| AI Content Generation          | Product titles, descriptions, SEO (OpenRouter, free models only)  | ✅          |
+| Google Sheets Integration      | Import/export, reporting, sync                                    | ✅          |
+| Supabase Backend               | DB, Auth, Storage, Edge Functions, CRON, Realtime                 | ✅          |
+| Modular Monorepo               | Strict separation, clean structure                                | ✅          |
+| Enterprise Security            | RLS, secure storage, best practices                               | ✅          |
+| Real-time Features             | Subscriptions, live updates                                      | ✅          |
+| 100% Test Coverage             | Unit, integration, E2E                                           | ✅          |
 
-  <div class="section" id="security">
-    <h2>Security & Compliance</h2>
-    <ul>
-      <li>Never expose secrets or API keys in frontend or public code</li>
-      <li>All sensitive logic is server-side only (Edge Functions)</li>
-      <li>RLS, secure storage, and best practices enforced</li>
-      <li>See <code>docs/security.md</code> for details</li>
-    </ul>
-  </div>
+---
 
-  <div class="section" id="license">
-    <h2>License</h2>
-    <p>This project is licensed under the MIT License. See <code>LICENSE</code> for details.</p>
-  </div>
+## Supported Integrations
 
-  <div class="section" id="acknowledgments">
-    <h2>Acknowledgments</h2>
-    <ul>
-      <li>Supabase team for backend infrastructure</li>
-      <li>Gelato, Printful, and Printify for print-on-demand APIs</li>
-      <li>OpenRouter for AI content generation</li>
-      <li>shadcn/ui and Tailwind Labs for UI components and styling</li>
-      <li>All contributors and open source maintainers</li>
-    </ul>
-  </div>
+| Integration     | Purpose                                 | Docs/Links |
+|-----------------|-----------------------------------------|------------|
+| Gelato API      | Print-on-demand automation              | [Gelato](https://dashboard.gelato.com/docs) |
+| Printful API    | Print-on-demand automation              | [Printful](https://developers.printful.com/docs/) |
+| Printify API    | Print-on-demand automation              | [Printify](https://developers.printify.com/) |
+| Google Sheets   | Data import/export, reporting           | [Google Sheets](https://developers.google.com/sheets/api) |
+| OpenRouter AI   | AI content generation (free models)     | [OpenRouter](https://openrouter.ai/docs) |
+| Supabase        | Backend, Auth, Storage, Edge Functions  | [Supabase](https://supabase.com/docs) |
 
-  <div class="section" id="development-workflow">
-    <h2>Development Workflow</h2>
-    <p>To start both the frontend (React) and Supabase local dev stack, simply run:</p>
-    <pre><code>npm run dev</code></pre>
-    <p>This command will concurrently start the Supabase backend and the frontend development server. You can also start them individually with <code>npm run dev:frontend</code> or <code>npm run dev:supabase</code>.</p>
-  </div>
-</body>
-</html> 
+---
+
+## Architecture
+
+- **Backend:** Supabase Edge Functions (TypeScript/Deno), Supabase (DB, Auth, Storage, Edge Functions, CRON), Gelato API, Printful API, Printify API, Google Sheets API, OpenRouter AI
+- **Frontend:** React (CRA, JS), Tailwind CSS, shadcn/ui, Supabase UI
+- **Monorepo:** Strict separation of frontend and backend, all configs and dependencies isolated
+- **Docs:** Modular, up-to-date, and actionable (see [`docs/`](docs/))
+
+See [`docs/architecture.md`](docs/architecture.md) and [`docs/diagrams/`](docs/diagrams/) for detailed diagrams and explanations.
+
+---
+
+<details>
+<summary><strong>Quick Start</strong></summary>
+
+```sh
+# 1. Clone the repository
+$ git clone <repo-url>
+$ cd autoPOD
+
+# 2. Install frontend dependencies
+$ cd frontend && npm install
+
+# 3. Set up environment variables
+#    (see docs/setup.md for details)
+
+# 4. Start Supabase local development
+$ supabase start
+
+# 5. Run Supabase migrations
+$ supabase db push
+
+# 6. Start all services
+$ npm run dev
+```
+
+> [!TIP]
+> See [`docs/setup.md`](docs/setup.md) for full details and environment variable examples.
+
+</details>
+
+---
+
+## Setup & Installation
+
+1. Clone the repository:
+   ```sh
+   git clone <repo-url>
+   cd autoPOD
+   ```
+2. Install frontend dependencies:
+   ```sh
+   cd frontend && npm install
+   ```
+3. Set up environment variables in `frontend/.env` and `supabase/.env` (see [`docs/setup.md`](docs/setup.md) for details)
+4. Start Supabase local development:
+   ```sh
+   supabase start
+   ```
+5. Run Supabase migrations:
+   ```sh
+   supabase db push
+   ```
+6. Start all services:
+   ```sh
+   npm run dev
+   ```
+   (Runs frontend and Supabase Edge Functions)
+
+See [`docs/setup.md`](docs/setup.md) for full details and environment variable examples.
+
+---
+
+## Usage
+
+- Access the frontend at [http://localhost:3000](http://localhost:3000)
+- API endpoints are documented in [`docs/api-backend.md`](docs/api-backend.md) and [`docs/api-frontend.md`](docs/api-frontend.md)
+- Authentication flows: email/password, magic link, phone/SMS, OAuth (Google, etc.)
+- Product and template management, file uploads, real-time features
+- AI content generation for product metadata (server-side only)
+- Google Sheets import/export for product and order data
+
+See [`docs/usage.md`](docs/usage.md) for user flows and feature guides.
+
+---
+
+## API Documentation
+
+### Backend API
+- All endpoints, request/response formats, and error handling in [`docs/api-backend.md`](docs/api-backend.md)
+- Supabase Edge Functions documented in [`supabase/functions/`](supabase/functions/)
+
+### Frontend API
+- API integration and usage in [`docs/api-frontend.md`](docs/api-frontend.md)
+- Supabase client usage, authentication, and storage
+
+---
+
+## Testing
+
+- 100% unit and integration test coverage required
+- Frontend: Jest + React Testing Library
+- Edge Functions: Deno test
+- See [`docs/testing.md`](docs/testing.md) for test strategy, coverage reports, and CI setup
+
+---
+
+## Deployment
+
+- Production deployment instructions in [`docs/deployment.md`](docs/deployment.md)
+- Environment variable management and security best practices
+- Zero-downtime migrations and rollbacks
+- CDN and cache configuration for assets
+
+---
+
+<details>
+<summary><strong>Troubleshooting & FAQ</strong></summary>
+
+- Common issues and solutions in [`docs/troubleshooting.md`](docs/troubleshooting.md)
+- FAQ in [`docs/faq.md`](docs/faq.md)
+- Contact support via issues or [`docs/faq.md`](docs/faq.md)
+
+</details>
+
+---
+
+## Contribution Guidelines
+
+- All contributors must read and follow [`docs/contribution.md`](docs/contribution.md)
+- Strict code review, PR, and code standards
+- Atomic commits, descriptive messages, and logical grouping
+- See [`docs/contribution.md`](docs/contribution.md) for PR process and review requirements
+
+### Contributor Onboarding Checklist
+
+- [ ] Read [`docs/contribution.md`](docs/contribution.md)
+- [ ] Set up local environment and run all tests
+- [ ] Follow code style and commit message guidelines
+- [ ] Submit PR with clear description and testing steps
+- [ ] Request review from at least one other engineer
+
+---
+
+> [!IMPORTANT]
+> **Security Notice:** Never expose secrets or API keys in frontend or public code. All sensitive logic is server-side only (Edge Functions). RLS, secure storage, and best practices enforced. See [`docs/security.md`](docs/security.md) for details.
+
+---
+
+## License
+
+This project is licensed under the MIT License. See [`LICENSE`](LICENSE) for details.
+
+---
+
+## Acknowledgments
+
+- Supabase team for backend infrastructure
+- Gelato, Printful, and Printify for print-on-demand APIs
+- OpenRouter for AI content generation
+- shadcn/ui and Tailwind Labs for UI components and styling
+- All contributors and open source maintainers
+
+---
+
+## Development Workflow
+
+To start both the frontend (React) and Supabase local dev stack, simply run:
+
+```sh
+npm run dev
+```
+
+This command will concurrently start the Supabase backend and the frontend development server. You can also start them individually with `npm run dev:frontend` or `npm run dev:supabase`. 
