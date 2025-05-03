@@ -181,5 +181,12 @@
       <li>All contributors and open source maintainers</li>
     </ul>
   </div>
+
+  <div class="section" id="development-workflow">
+    <h2>Development Workflow</h2>
+    <p>To start both the frontend (React) and Supabase local dev stack, simply run:</p>
+    <pre><code>npm run dev</code></pre>
+    <p>This command will concurrently start the Supabase backend and the frontend development server. You can also start them individually with <code>npm run dev:frontend</code> or <code>npm run dev:supabase</code>.</p>
+  </div>
 </body>
 </html> 

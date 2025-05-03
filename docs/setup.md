@@ -71,6 +71,22 @@ The app will be available at [http://localhost:3000](http://localhost:3000).
 supabase functions serve --env-file supabase/.env
 ```
 
+## Starting Both Frontend and Supabase
+
+To start both the frontend (React) and Supabase local dev stack at once, run this command from the project root:
+
+```sh
+npm run dev
+```
+
+This will concurrently start:
+- The Supabase backend (local dev stack)
+- The frontend React development server
+
+You can also start them individually:
+- Frontend only: `npm run dev:frontend`
+- Supabase only: `npm run dev:supabase`
+
 ## Troubleshooting
 
 - If you see DB connection errors, check your `SUPABASE_DB_URL` and that Supabase is running.
