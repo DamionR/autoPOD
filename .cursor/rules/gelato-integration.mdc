@@ -1,0 +1,67 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Gelato API Integration Standards
+
+This project integrates with the Gelato API for product templates, product creation, and e-commerce operations. Follow these standards for all Gelato-related development.
+
+## General Principles
+- Use the official [Gelato API documentation](mdc:https:/dashboard.gelato.com/docs) as the source of truth for endpoints and request/response formats.
+- Never hardcode API keys or secrets; always use environment variables and secure storage.
+- All Gelato API calls must be made server-side (never expose keys in frontend code).
+- Handle all API errors gracefully and provide actionable error messages to users.
+- Log all failed API interactions for monitoring and debugging.
+
+## Template Management
+- Use the [Get Template API](mdc:https:/dashboard.gelato.com/docs/ecommerce/templates/get) to fetch template details, including variants and image placeholders.
+- Store template metadata in your database for quick access and to reduce API calls, but always provide a way to refresh from Gelato.
+- When creating or updating templates, ensure placeholder names match those defined in Gelato's dashboard.
+
+## Product Creation
+- Use the [Create Product from Template API](mdc:https:/dashboard.gelato.com/docs/ecommerce/products/create-from-template) to generate products programmatically.
+- Always validate required fields: `storeId`, `templateId`, `title`, `description`, and at least one variant.
+- For each variant, ensure all required image placeholders are provided with valid file URLs (JPG, PNG, PDF).
+- Use the [Get Product API](mdc:https:/dashboard.gelato.com/docs/ecommerce/products/get) to check product creation status and retrieve product details.
+- Support partial variant creation: if only a subset of variants is provided, only those will be created.
+
+## File & Asset Handling
+- Store all print files and assets in Supabase Storage, using Smart CDN for delivery.
+- Ensure all file URLs provided to Gelato are public and accessible until product creation is complete.
+- Follow Gelato's file format guidelines for print quality ([see docs](mdc:https:/dashboard.gelato.com/docs/get-started/#files-for-print)).
+
+## API Security & Rate Limiting
+- Rotate API keys regularly and restrict their scope where possible.
+- Implement retry logic and exponential backoff for rate-limited or transient errors.
+- Monitor API usage and set up alerts for abnormal patterns.
+
+## Data Consistency & Sync
+- Store Gelato product and template IDs in your database for cross-referencing.
+- Implement background jobs to periodically sync product/template data from Gelato to your local DB.
+- On product creation, update your DB with the returned Gelato product ID and status.
+
+## Error Handling & Monitoring
+- Surface actionable error messages to users (e.g., missing placeholders, invalid file URLs).
+- Log all API errors with context (endpoint, payload, response, user/session info).
+- Set up monitoring for failed product creations and template syncs.
+
+## Testing & Mocking
+- Use mock servers or fixtures for local development and testing (never use real API keys in tests).
+- Validate all integration points with the Gelato sandbox environment before production deployment.
+
+## Documentation & Code Quality
+- Document all Gelato integration points in code and in the project wiki.
+- Use clear, descriptive function and variable names (e.g., `fetchGelatoTemplate`, `createGelatoProduct`).
+- Keep Gelato integration logic modular and isolated from core business logic.
+
+## References
+- [Gelato API Docs: Get Template](mdc:https:/dashboard.gelato.com/docs/ecommerce/templates/get)
+- [Gelato API Docs: Create Product from Template](mdc:https:/dashboard.gelato.com/docs/ecommerce/products/create-from-template)
+- [Gelato API Docs: Get Product](mdc:https:/dashboard.gelato.com/docs/ecommerce/products/get)
+- [Gelato API Docs: List Products](mdc:https:/dashboard.gelato.com/docs/ecommerce/products/list)
+- [Gelato API Docs: Product Cover Dimensions](mdc:https:/dashboard.gelato.com/docs/products/product/cover-dimensions)
+
+---
+
+**These standards are mandatory for all Gelato API-related development.**

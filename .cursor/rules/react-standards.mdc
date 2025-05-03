@@ -1,0 +1,38 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# React Component Standards
+- Use function components and React hooks; avoid class components.
+- Each component/page must be in its own folder with `index.js` and (if needed) `styles.css`.
+- Use prop destructuring and default values for props.
+- Document all props and components with JSDoc-style comments.
+- Keep components small, focused, and reusable; follow single responsibility principle.
+- Use semantic HTML and ARIA attributes for accessibility.
+- All interactive elements must be keyboard accessible and screen reader friendly.
+- Provide alt text for all images and icons.
+- Use CSS Modules or styled-components for scoped styles; avoid global CSS and inline styles except for dynamic cases.
+- Prefer declarative patterns (map, filter, reduce) over imperative loops.
+- Use React Context or Redux for global state only when necessary; prefer local state for isolated components.
+- Write unit tests for all components (Jest + React Testing Library); cover critical user flows with integration tests.
+
+# Accessibility (a11y)
+- Ensure color contrast meets WCAG 2.1 AA standards.
+- All forms must have labels, validation, and clear error states.
+- Use role attributes and ARIA landmarks where appropriate.
+- All user flows must be testable with keyboard only.
+
+# Performance Optimization
+- Use React.memo and useCallback/useMemo to avoid unnecessary re-renders.
+- Code-split large pages/components with React.lazy and Suspense.
+- Avoid prop drilling; use context or composition.
+- Optimize images (size, format, lazy loading).
+- Minimize bundle size by importing only what you use.
+- Use error boundaries for robust error handling in the UI.
+
+# General Frontend Best Practices
+- Never hardcode API URLs; use environment variables.
+- All API calls must be in `src/api/` as reusable functions, using fetch or axios with interceptors.
+- Use Prettier and ESLint for consistent code style.
+- Remove unused code, files, and dependencies promptly.

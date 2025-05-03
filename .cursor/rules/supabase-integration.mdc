@@ -1,0 +1,137 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Supabase Integration Standards
+This project uses Supabase as the primary backend platform for database, authentication, storage, edge functions, and more. Follow these standards for consistent integration.
+
+## Authentication & User Management
+- Use Supabase Auth for all authentication flows
+- Implement both password-based and social authentication where applicable
+- Store user metadata in `auth.users` and extend with custom profiles in `public.profiles`
+- Follow security best practices:
+  - Never store sensitive data in `raw_user_meta_data`
+  - Use `raw_app_meta_data` for authorization data
+  - Implement proper session management
+  - Use row level security (RLS) policies (see `supa-rls.mdc`)
+
+## Storage & CDN
+- Use Supabase Storage for all file uploads
+- Leverage Smart CDN for optimized asset delivery:
+  - Enable image transformations for dynamic resizing/optimization
+  - Use appropriate cache policies
+  - Implement proper bucket policies
+- Follow storage bucket organization:
+  - `/public/` - Publicly accessible assets
+  - `/private/` - User-specific files (protected by RLS)
+  - `/templates/` - Gelato product templates
+  - `/uploads/` - Temporary upload storage
+
+## Edge Functions
+- Follow edge function guidelines in `supabase-rules.mdc`
+- Additional considerations:
+  - Use TypeScript for all edge functions
+  - Implement proper error handling and logging
+  - Use environment variables for configuration
+  - Follow the principle of least privilege
+  - Document all functions with OpenAPI/Swagger
+
+## CRON Jobs
+- Use Supabase scheduled functions for automated tasks
+- Follow these patterns:
+  - One job per business function
+  - Include retry logic for resilience
+  - Implement proper logging and monitoring
+  - Use appropriate scheduling intervals
+  - Document job purpose and schedule
+
+## Vector Support
+- Use pgvector for AI/ML features:
+  - Store embeddings efficiently
+  - Implement proper indexing
+  - Use appropriate distance metrics
+  - Follow performance best practices
+  - Document vector schemas
+
+## UI Components
+- Use Supabase UI Library with shadcn/ui:
+  - Prefer built-in components over custom implementations
+  - Follow component composition patterns
+  - Implement proper theming
+  - Ensure accessibility compliance
+  - Document component usage
+
+### Required UI Components
+1. Auth Components:
+   - Sign In/Sign Up forms
+   - Social auth buttons
+   - Password reset flow
+   - MFA setup
+
+2. Data Components:
+   - Infinite scroll lists
+   - Real-time updates
+   - Data grids
+   - Form elements
+
+3. Upload Components:
+   - File dropzone
+   - Image preview
+   - Upload progress
+   - Error handling
+
+4. Collaboration Components:
+   - Real-time cursors
+   - Avatar stacks
+   - Chat interface
+   - Presence indicators
+
+## Real-time Features
+- Implement real-time subscriptions where needed:
+  - Use appropriate channels
+  - Handle connection management
+  - Implement proper error recovery
+  - Document subscription patterns
+
+## Performance Optimization
+- Follow CDN best practices:
+  - Use appropriate cache policies
+  - Implement proper invalidation
+  - Monitor cache hit rates
+  - Optimize asset delivery
+
+- Database optimization:
+  - Use appropriate indexes
+  - Implement connection pooling
+  - Monitor query performance
+  - Use prepared statements
+
+## Security Standards
+- Follow Supabase security best practices:
+  - Implement proper RLS policies
+  - Use appropriate service roles
+  - Secure environment variables
+  - Regular security audits
+  - Monitor auth attempts
+
+## Monitoring & Logging
+- Implement comprehensive monitoring:
+  - Use Supabase logs
+  - Monitor edge function performance
+  - Track storage usage
+  - Monitor auth metrics
+  - Alert on anomalies
+
+## Development Workflow
+- Use Supabase CLI for local development
+- Follow migration practices (see `db-migration.mdc`)
+- Implement proper testing:
+  - Unit tests for edge functions
+  - Integration tests for API
+  - E2E tests for critical flows
+  - UI component tests
+
+---
+
+**These standards are mandatory for all Supabase-related development.**

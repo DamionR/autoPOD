@@ -1,0 +1,23 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Tailwind CSS Usage
+- Use Tailwind CSS utility classes for all styling; avoid custom CSS unless necessary for complex cases.
+- Organize custom styles in `src/styles/` and use CSS Modules for component-specific overrides.
+- Use shadcn/ui or similar headless UI libraries for accessible, composable UI primitives when possible.
+- Prefer composable utility classes over long, repetitive className strings; extract to reusable components or class sets as needed.
+- Use Tailwind's responsive, hover, focus, and dark mode variants for adaptive design.
+- Never use !important in Tailwind classes; refactor as needed.
+- Use Tailwind's color palette and spacing scale for consistency.
+- Use semantic HTML and ARIA attributes for accessibility.
+- Ensure all color choices meet WCAG 2.1 AA contrast requirements.
+- Test all UI with keyboard navigation and screen readers.
+
+# Tailwind Best Practices
+- Use Prettier plugin for Tailwind to keep class order consistent.
+- Remove unused classes and styles to minimize bundle size.
+- Document any custom utility classes or design tokens in the codebase.
+- Prefer Tailwind's built-in utilities for layout, spacing, and typography.
+- Use Tailwind's config for theme customization; avoid hardcoding values in components.

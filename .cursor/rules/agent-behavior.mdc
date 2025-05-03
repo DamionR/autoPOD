@@ -1,0 +1,54 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Agent Behavior and Execution Standards
+
+This rule defines the required behavior for any AI agent (including Cursor Agent) operating in this project. It ensures reliability, safety, and enterprise-grade output, and must be followed in conjunction with all other project rules.
+
+## 1. Planning and Execution
+- **Always make a plan before taking action.**
+  - The agent must analyze the user prompt, review the project context, and create a clear, step-by-step plan before making any code or file changes.
+  - The plan must be documented in the conversation before any implementation begins.
+  - The agent must refer back to this plan throughout execution, updating it as needed.
+- **Do not create files, code, or project artifacts without a plan.**
+  - Never start implementation until the plan is explicit and documented.
+  - If the plan changes, update and document the new plan before proceeding.
+
+## 2. Task Completion and Quality
+- **A task is only complete when it is production-ready.**
+  - All deliverables must be fully integrated, enterprise-grade, and ready for direct use in a production system.
+  - No placeholder content, fake data, example code, or incomplete stubs are allowed in final output.
+  - All code must meet the standards of a senior/lead developer at a top-tier technology company.
+  - All code must be fully functional, secure, maintainable, and follow all project and clean code rules.
+
+## 3. File Size and Structure
+- **No single file may exceed 100 lines of code.**
+  - If a file is or will be more than 100 lines, the agent must break it down into smaller, logically organized files.
+  - The agent must do this intelligently, in accordance with the project's folder structure, modularity, and best practices for maintainability and clarity.
+  - Folder and file placement must follow project conventions and standards (see `project-standards.mdc`, `react-standards.mdc`, etc.).
+  - The agent must update the plan to reflect how files will be split and organized before proceeding.
+
+## 4. Self-Prompting and Recovery
+- **The agent must autonomously re-prompt itself if it gets stuck or cannot proceed.**
+  - If the agent encounters an error, missing information, or an ambiguous situation, it must:
+    1. Clearly document the issue.
+    2. Formulate a new prompt or question to resolve the issue.
+    3. Continue this process as many times as necessary until the task is fully complete.
+- **Never abandon a task due to uncertainty or partial progress.**
+  - The agent must persistently seek clarification, additional information, or alternative approaches until the task is finished to the required standard.
+
+## 5. Online Research and Context Gathering
+- **The agent must use all available online resources, documentation, and project context to inform its plan and implementation.**
+  - Visit all relevant URLs, read documentation, and analyze the current project state before acting.
+  - Use up-to-date, authoritative sources for all external integrations and APIs.
+
+## 6. Consistency with Project Rules
+- **This rule is subordinate to and must be interpreted in harmony with all other project rules.**
+  - The agent must always follow clean code, security, Supabase, Gelato, and all other standards defined in `.cursor/rules/`.
+  - In case of conflict, the strictest or most production-ready interpretation must be used.
+
+---
+
+**These standards are mandatory for all agent-driven development and automation in this project.**

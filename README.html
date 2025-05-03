@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>autoPOD: E-commerce Automation Platform</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; line-height: 1.6; }
+    h1, h2, h3 { color: #1a202c; }
+    code, pre { background: #f4f4f4; padding: 2px 4px; border-radius: 3px; }
+    ul { margin-left: 2rem; }
+    a { color: #2563eb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .section { margin-bottom: 2.5rem; }
+    .toc { background: #f9fafb; border: 1px solid #e5e7eb; padding: 1rem; border-radius: 6px; margin-bottom: 2rem; }
+    .toc ul { margin: 0; padding-left: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>autoPOD: E-commerce Automation Platform</h1>
+  <p><strong>Production-ready, enterprise-grade system for e-commerce automation, print-on-demand, AI content generation, and scalable cloud backend.</strong></p>
+
+  <div class="toc">
+    <h2>Table of Contents</h2>
+    <ul>
+      <li><a href="#overview">Project Overview & Value Proposition</a></li>
+      <li><a href="#integrations">Supported Integrations</a></li>
+      <li><a href="#architecture">Architecture</a></li>
+      <li><a href="#setup">Setup & Installation</a></li>
+      <li><a href="#usage">Usage</a></li>
+      <li><a href="#api">API Documentation</a></li>
+      <li><a href="#testing">Testing</a></li>
+      <li><a href="#deployment">Deployment</a></li>
+      <li><a href="#troubleshooting">Troubleshooting & FAQ</a></li>
+      <li><a href="#contribution">Contribution Guidelines</a></li>
+      <li><a href="#security">Security & Compliance</a></li>
+      <li><a href="#license">License</a></li>
+      <li><a href="#acknowledgments">Acknowledgments</a></li>
+    </ul>
+  </div>
+
+  <div class="section" id="overview">
+    <h2>Project Overview & Value Proposition</h2>
+    <p>
+      <strong>autoPOD</strong> is a full-stack, production-grade platform for e-commerce automation, print-on-demand, and AI-powered content generation. It leverages Supabase for scalable backend services (database, auth, storage, edge functions, CRON), integrates with Gelato, Printful, and Printify APIs for product and order automation, supports Google Sheets for data sync, and uses OpenRouter for advanced AI content generation. The system is modular, secure, and ready for enterprise deployment.
+    </p>
+    <ul>
+      <li>Automate product creation and order fulfillment with Gelato, Printful, and Printify</li>
+      <li>Store and serve assets via Supabase Storage + Smart CDN</li>
+      <li>AI-powered product titles, descriptions, and SEO metadata (OpenRouter, free models only)</li>
+      <li>Google Sheets integration for import/export and reporting</li>
+      <li>Enterprise-grade security, RLS, and compliance</li>
+      <li>100% test coverage, modular code, and clean monorepo structure</li>
+    </ul>
+  </div>
+
+  <div class="section" id="integrations">
+    <h2>Supported Integrations</h2>
+    <ul>
+      <li><strong>Gelato API</strong>: Print-on-demand product and order automation</li>
+      <li><strong>Printful API</strong>: Print-on-demand product and order automation</li>
+      <li><strong>Printify API</strong>: Print-on-demand product and order automation</li>
+      <li><strong>Google Sheets</strong>: Data import/export and reporting</li>
+      <li><strong>OpenRouter AI</strong>: AI content generation (free models only)</li>
+      <li><strong>Supabase</strong>: Database, Auth, Storage, Edge Functions, CRON, Realtime</li>
+    </ul>
+  </div>
+
+  <div class="section" id="architecture">
+    <h2>Architecture</h2>
+    <ul>
+      <li><strong>Backend:</strong> Supabase Edge Functions (TypeScript/Deno), Supabase (DB, Auth, Storage, Edge Functions, CRON), Gelato API, Printful API, Printify API, Google Sheets API, OpenRouter AI</li>
+      <li><strong>Frontend:</strong> React (CRA, JS), Tailwind CSS, shadcn/ui, Supabase UI</li>
+      <li><strong>Monorepo:</strong> Strict separation of frontend and backend, all configs and dependencies isolated</li>
+      <li><strong>Docs:</strong> Modular, up-to-date, and actionable (see <code>docs/</code> directory)</li>
+    </ul>
+    <p>See <code>docs/architecture.md</code> and <code>docs/diagrams/</code> for detailed diagrams and explanations.</p>
+  </div>
+
+  <div class="section" id="setup">
+    <h2>Setup & Installation</h2>
+    <ol>
+      <li>Clone the repository: <code>git clone &lt;repo-url&gt;</code></li>
+      <li>Install frontend dependencies: <code>cd frontend &amp;&amp; npm install</code></li>
+      <li>Set up environment variables in <code>frontend/.env</code> and <code>supabase/.env</code> (see <code>docs/setup.md</code> for details)</li>
+      <li>Start Supabase local development: <code>supabase start</code></li>
+      <li>Run Supabase migrations: <code>supabase db push</code> (see <code>docs/deployment.md</code>)</li>
+      <li>Start all services: <code>npm run dev</code> from the project root (runs frontend and Supabase Edge Functions)</li>
+    </ol>
+    <p>See <code>docs/setup.md</code> for full details and environment variable examples.</p>
+  </div>
+
+  <div class="section" id="usage">
+    <h2>Usage</h2>
+    <ul>
+      <li>Access the frontend at <code>http://localhost:3000</code></li>
+      <li>API endpoints are documented in <code>docs/api-backend.md</code> and <code>docs/api-frontend.md</code></li>
+      <li>Authentication flows: email/password, magic link, phone/SMS, OAuth (Google, etc.)</li>
+      <li>Product and template management, file uploads, real-time features</li>
+      <li>AI content generation for product metadata (server-side only)</li>
+      <li>Google Sheets import/export for product and order data</li>
+    </ul>
+    <p>See <code>docs/usage.md</code> for user flows and feature guides.</p>
+  </div>
+
+  <div class="section" id="api">
+    <h2>API Documentation</h2>
+    <h3>Backend API</h3>
+    <ul>
+      <li>All endpoints, request/response formats, and error handling in <code>docs/api-backend.md</code></li>
+      <li>Supabase Edge Functions documented in <code>supabase/functions/</code></li>
+    </ul>
+    <h3>Frontend API</h3>
+    <ul>
+      <li>API integration and usage in <code>docs/api-frontend.md</code></li>
+      <li>Supabase client usage, authentication, and storage</li>
+    </ul>
+  </div>
+
+  <div class="section" id="testing">
+    <h2>Testing</h2>
+    <ul>
+      <li>100% unit and integration test coverage required</li>
+      <li>Frontend: Jest + React Testing Library</li>
+      <li>Edge Functions: Deno test</li>
+      <li>See <code>docs/testing.md</code> for test strategy, coverage reports, and CI setup</li>
+    </ul>
+  </div>
+
+  <div class="section" id="deployment">
+    <h2>Deployment</h2>
+    <ul>
+      <li>Production deployment instructions in <code>docs/deployment.md</code></li>
+      <li>Environment variable management and security best practices</li>
+      <li>Zero-downtime migrations and rollbacks</li>
+      <li>CDN and cache configuration for assets</li>
+    </ul>
+  </div>
+
+  <div class="section" id="troubleshooting">
+    <h2>Troubleshooting & FAQ</h2>
+    <ul>
+      <li>Common issues and solutions in <code>docs/troubleshooting.md</code></li>
+      <li>FAQ in <code>docs/faq.md</code></li>
+      <li>Contact support via issues or <code>docs/faq.md</code></li>
+    </ul>
+  </div>
+
+  <div class="section" id="contribution">
+    <h2>Contribution Guidelines</h2>
+    <ul>
+      <li>All contributors must read and follow <code>docs/contribution.md</code></li>
+      <li>Strict code review, PR, and code standards</li>
+      <li>Atomic commits, descriptive messages, and logical grouping</li>
+      <li>See <code>docs/contribution.md</code> for PR process and review requirements</li>
+    </ul>
+  </div>
+
+  <div class="section" id="security">
+    <h2>Security & Compliance</h2>
+    <ul>
+      <li>Never expose secrets or API keys in frontend or public code</li>
+      <li>All sensitive logic is server-side only (Edge Functions)</li>
+      <li>RLS, secure storage, and best practices enforced</li>
+      <li>See <code>docs/security.md</code> for details</li>
+    </ul>
+  </div>
+
+  <div class="section" id="license">
+    <h2>License</h2>
+    <p>This project is licensed under the MIT License. See <code>LICENSE</code> for details.</p>
+  </div>
+
+  <div class="section" id="acknowledgments">
+    <h2>Acknowledgments</h2>
+    <ul>
+      <li>Supabase team for backend infrastructure</li>
+      <li>Gelato, Printful, and Printify for print-on-demand APIs</li>
+      <li>OpenRouter for AI content generation</li>
+      <li>shadcn/ui and Tailwind Labs for UI components and styling</li>
+      <li>All contributors and open source maintainers</li>
+    </ul>
+  </div>
+</body>
+</html> 
