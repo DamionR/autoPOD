@@ -1,10 +1,8 @@
-# autoPOD: E-commerce Automation Platform
+# autoPOD: E-commerce Automation
 
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Coverage](https://img.shields.io/badge/coverage-100%25-success)
-
-**Production-ready, enterprise-grade system for e-commerce automation, print-on-demand, AI content generation, and scalable cloud backend.**
 
 ---
 
