@@ -28,7 +28,7 @@
 
 ## Project Overview & Value Proposition
 
-> **autoPOD** is a full-stack, production-grade platform for e-commerce automation, print-on-demand, and AI-powered content generation. It leverages Supabase for scalable backend services (database, auth, storage, edge functions, CRON), integrates with Gelato, Printful, and Printify APIs for product and order automation, supports Google Sheets for data sync, and uses OpenRouter for advanced AI content generation. The system is modular, secure, and ready for enterprise deployment.
+> **autoPOD** is a full-stack e-commerce automation, print-on-demand, and AI-powered content generation. It leverages Supabase for scalable backend services (database, auth, storage, edge functions, CRON), integrates with Gelato, Printful, and Printify APIs for product and order automation, supports Google Sheets for data sync, and uses OpenRouter for advanced AI content generation. The system is modular, secure, and ready for enterprise deployment.
 
 - Automate product creation and order fulfillment with Gelato, Printful, and Printify
 - Store and serve assets via Supabase Storage + Smart CDN
